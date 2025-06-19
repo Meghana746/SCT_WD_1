@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LangLearn - Landing Page</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; background-color: white; color: black; }
+
+  header {
+    background-color: teal; color: white; padding: 1rem 2rem;
+    position: fixed; top: 0; left: 0; width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 1000; transition: background-color 0.3s;
+  }
+  header.scrolled { background-color: darkcyan; }
+  nav a {
+    color: white; text-decoration: none; margin-left: 1rem;
+    padding: 0.3rem 0.6rem; border-radius: 4px; transition: background-color 0.3s;
+  }
+  nav a:hover { background-color: lightpink; }
+
+  .section { padding: 7rem 2rem 4rem; text-align: center; }
+  .hero {
+    background-color: lightcyan;
+  }
+  .hero h2 { font-size: 2.5rem; color: teal; margin-bottom: 1rem; }
+  .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
+  .hero button {
+    background-color: teal; color: white; border: none; border-radius: 5px;
+    padding: 0.8rem 2rem; cursor: pointer; font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  .hero button:hover { background-color: lightpink; }
+
+  .features {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;
+    padding: 2rem;
+  }
+  .feature {
+    background-color: white; padding: 1.5rem; border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  .feature h3 { color: teal; margin-bottom: 0.5rem; }
+
+  .form-section {
+    background-color: #f1f1f1; display: none; padding: 7rem 2rem 4rem; text-align: center;
+  }
+  .form-section h2 { margin-bottom: 1rem; color: teal; }
+  form { max-width: 400px; margin: 0 auto; }
+  input, button {
+    width: 100%; padding: 0.7rem; margin: 0.5rem 0;
+    border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;
+  }
+  form button {
+    background-color: teal; color: white; border: none; cursor: pointer; transition: background-color 0.3s;
+  }
+  form button:hover { background-color: lightpink; }
+
+  footer {
+    background-color: teal; color: white; text-align: center; padding: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header id="navbar">
+  <h1>LangLearn</h1>
+  <nav>
+    <a href="#" onclick="showLanding()">Home</a>
+    <a href="#features">Features</a>
+    <a href="#" onclick="showRegister()">Register</a>
+  </nav>
+</header>
+
+<section class="hero section" id="landingPage">
+  <h2>Learn Languages Online</h2>
+  <p>Join thousands learning English, Spanish, French, and more.</p>
+  <button onclick="showRegister()">Get Started</button>
+</section>
+
+<section class="features" id="features">
+  <div class="feature">
+    <h3>Expert Teachers</h3>
+    <p>Classes with certified tutors.</p>
+  </div>
+  <div class="feature">
+    <h3>Flexible Schedules</h3>
+    <p>Morning, evening, or weekends. Your choice!</p>
+  </div>
+  <div class="feature">
+    <h3>Fun & Interactive</h3>
+    <p>Games, quizzes, and real conversation practice.</p>
+  </div>
+</section>
+
+<section class="form-section" id="registrationPage">
+  <h2>Register Now</h2>
+  <form onsubmit="event.preventDefault(); alert('Thanks for registering!');">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="text" placeholder="Preferred Language" required>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 LangLearn. All rights reserved.
+</footer>
+
+<script>
+  // Scroll effect on header
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('navbar');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Show Registration Form → Hide Landing Page
+  function showRegister() {
+    document.getElementById('landingPage').style.display = 'none';
+    document.getElementById('features').style.display = 'none';
+    document.getElementById('registrationPage').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Show Landing Page → Hide Registration Page
+  function showLanding() {
+    document.getElementById('landingPage').style.display = 'block';
+    document.getElementById('features').style.display = 'grid';
+    document.getElementById('registrationPage').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
+  
